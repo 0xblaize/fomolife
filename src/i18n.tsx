@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 export type Language = "zh" | "en";
 
@@ -16,6 +16,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     return window.localStorage.getItem("fomo-language") === "en" ? "en" : "zh";
   });
 
+  useEffect(() => {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+  }, [lang]);
+
   const value = useMemo(
     () => ({
       lang,
@@ -24,7 +28,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         const next = lang === "zh" ? "en" : "zh";
         setLang(next);
         window.localStorage.setItem("fomo-language", next);
-        document.documentElement.lang = next === "zh" ? "zh-CN" : "en";
       },
     }),
     [lang],

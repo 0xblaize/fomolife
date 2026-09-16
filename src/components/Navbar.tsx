@@ -56,8 +56,8 @@ export default function Navbar() {
               {label(l.label, ({ Vault: "永恒金库", Tokenomics: "代币经济", "Genesis NFT": "创世 NFT", IDO: "IDO", Roadmap: "路线图", FAQ: "常见问题" } as Record<string, string>)[l.label] ?? l.label)}
             </a>
           ))}
-          <button type="button" onClick={toggle} className="lang-toggle" aria-label={label("Switch to Chinese", "切换英文")}>
-            <span className={isZh ? "active" : ""}>中</span><span className={!isZh ? "active" : ""}>EN</span>
+          <button type="button" onClick={toggle} className="lang-toggle" aria-label={isZh ? "Switch to English" : "切换中文"}>
+            {isZh ? "EN" : "中文"}
           </button>
           <a
             href={TELEGRAM}
@@ -85,8 +85,8 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center lg:hidden">
-          <button type="button" onClick={toggle} className="lang-toggle" aria-label={label("Switch to Chinese", "切换英文")}>
-            <span className={isZh ? "active" : ""}>中</span><span className={!isZh ? "active" : ""}>EN</span>
+          <button type="button" onClick={toggle} className="lang-toggle" aria-label={isZh ? "Switch to English" : "切换中文"}>
+            {isZh ? "EN" : "中文"}
           </button>
           <button
             onClick={() => setOpen(!open)}
