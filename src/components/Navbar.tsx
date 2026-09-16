@@ -28,7 +28,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "border-b border-gold/25 bg-void/90 backdrop-blur-xl" : "bg-transparent"
+        scrolled ? "border-b border-cream/15 bg-void/95 backdrop-blur-xl" : "bg-void/35 backdrop-blur-sm"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
@@ -57,7 +57,7 @@ export default function Navbar() {
             href={TELEGRAM}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 bg-gradient-to-r from-gold to-amber px-5 py-2.5 text-xs font-black tracking-widest text-void uppercase"
+            className="flex items-center gap-2 border border-amber/60 bg-amber px-5 py-2.5 text-xs font-black tracking-widest text-void uppercase transition hover:bg-cream"
           >
             <Send size={14} /> {label("Join Community", "加入社区")}
           </a>
@@ -100,7 +100,7 @@ export default function Navbar() {
                 href={TELEGRAM}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 flex items-center justify-center gap-2 bg-gradient-to-r from-gold to-amber px-5 py-3 text-xs font-black tracking-widest text-void uppercase"
+                className="mt-3 flex items-center justify-center gap-2 border border-amber/60 bg-amber px-5 py-3 text-xs font-black tracking-widest text-void uppercase transition hover:bg-cream"
               >
                 <Send size={14} /> {label("Join Community", "加入社区")}
               </a>
