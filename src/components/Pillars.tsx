@@ -34,7 +34,7 @@ export default function Pillars() {
   const { isZh } = useLanguage();
   return (
     <>
-      <section id="pillars" className="relative mx-auto w-full px-4 py-24 sm:px-6">
+      <section id="pillars" className="relative mx-auto w-full max-w-[1440px] px-4 py-24 sm:px-6">
         <SectionHead
           kicker="What is FOMO Life?"
           title={<><Dual en="MECHANISM" zh="机制" /> <span className="text-gold"><Dual en="FIRST." zh="优先。" /></span></>}
@@ -56,7 +56,7 @@ export default function Pillars() {
       </section>
 
       <section className="border-y border-blood/20 bg-gradient-to-b from-blood/5 to-transparent">
-        <div className="mx-auto w-full px-4 py-24 sm:px-6">
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-24 sm:px-6">
           <SectionHead
             kicker="The Design Problem"
             title={<><Dual en="FROM ATTENTION" zh="从注意力" /> <span className="text-glow-red text-blood"><Dual en="TO PARTICIPATION" zh="到参与" /></span></>}

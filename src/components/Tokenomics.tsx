@@ -8,7 +8,7 @@ const LOOP = ["PARTICIPATION", "PROTOCOL ACTIVITY", "REWARDS + BURN", "SCARCITY"
 export default function Tokenomics() {
   return (
     <section id="tokenomics" className="border-y border-gold/20 bg-char/40">
-      <div className="mx-auto w-full px-4 py-24 sm:px-6">
+      <div className="mx-auto w-full max-w-[1440px] px-4 py-24 sm:px-6">
         <SectionHead
           kicker="The Native Economic Asset"
           title={<>TOKEN <span className="text-gold">TAX</span> & FLYWHEEL</>}

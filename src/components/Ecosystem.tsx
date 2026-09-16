@@ -5,7 +5,7 @@ import { Reveal, SectionHead } from "./ui";
 export default function Ecosystem() {
   return (
     <>
-      <section id="ecosystem" className="mx-auto w-full px-4 py-24 sm:px-6">
+      <section id="ecosystem" className="mx-auto w-full max-w-[1440px] px-4 py-24 sm:px-6">
         <SectionHead
           kicker="One Connected Ecosystem"
           title={<>COMMUNITY IS CONSENSUS. <span className="text-gold">CONSENSUS IS WEALTH.</span></>}
@@ -35,7 +35,7 @@ export default function Ecosystem() {
       </section>
 
       <section id="roadmap" className="border-y border-gold/20 bg-char/40">
-        <div className="mx-auto w-full px-4 py-24 sm:px-6">
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-24 sm:px-6">
           <SectionHead
             kicker="Development Direction"
             title={<>THE <span className="text-gold">ROADMAP</span></>}
@@ -66,7 +66,7 @@ export default function Ecosystem() {
         </div>
       </section>
 
-      <section id="security" className="mx-auto w-full px-4 py-24 sm:px-6">
+      <section id="security" className="mx-auto w-full max-w-[1440px] px-4 py-24 sm:px-6">
         <SectionHead
           kicker="Trust Center"
           title={<>VERIFY <span className="text-gold">THE MECHANISM</span></>}

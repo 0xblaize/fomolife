@@ -6,7 +6,7 @@ export default function Nft() {
   return (
     <section id="nft" className="relative overflow-hidden">
       <div className="pointer-events-none absolute top-0 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(217,166,42,0.12),transparent_70%)]" />
-      <div className="relative mx-auto w-full px-4 py-24 sm:px-6">
+      <div className="relative mx-auto w-full max-w-[1440px] px-4 py-24 sm:px-6">
         <SectionHead
           kicker="300 Fixed Positions"
           title={<>FOMO LIFE <span className="text-glow-gold text-gold">GENESIS</span></>}

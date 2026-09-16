@@ -1,4 +1,9 @@
 export const TELEGRAM = "https://t.me/FomoLife_Official";
+export const SOCIALS = [
+  { label: "X", href: "https://x.com/fomolife_2026?s=11", icon: "x" },
+  { label: "Telegram", href: TELEGRAM, icon: "telegram" },
+  { label: "DeBox", href: "https://m.debox.pro/group?id=xdgmw46w&code=52z84usq", icon: "debox" },
+] as const;
 
 export const VAULT_ALLOCATION = [
   {

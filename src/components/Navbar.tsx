@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Send } from "lucide-react";
-import { TELEGRAM } from "../data";
+import { Menu, X, Send, Globe2 } from "lucide-react";
+import { SOCIALS, TELEGRAM } from "../data";
 import { useLanguage, copy } from "../i18n";
 
 const LINKS = [
@@ -12,6 +12,12 @@ const LINKS = [
   { label: "Roadmap", href: "#roadmap" },
   { label: "FAQ", href: "#faq" },
 ];
+
+function SocialIcon({ type }: { type: (typeof SOCIALS)[number]["icon"] }) {
+  if (type === "telegram") return <Send size={15} />;
+  if (type === "debox") return <Globe2 size={15} />;
+  return <span className="text-sm font-black leading-none" aria-hidden="true">𝕏</span>;
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -31,7 +37,7 @@ export default function Navbar() {
         scrolled ? "border-b border-cream/15 bg-void/95 backdrop-blur-xl" : "bg-void/35 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex w-full items-center justify-between px-4 py-4 sm:px-6">
+      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-4 py-4 sm:px-6">
         <a href="#top" className="flex items-center gap-3">
           <img src="/image.png" alt="FOMO Life logo" className="h-11 w-11 rounded-full border border-gold/50 object-cover shadow-[0_0_24px_rgba(217,166,42,0.35)]" />
           <div className="leading-tight">
@@ -61,6 +67,21 @@ export default function Navbar() {
           >
             <Send size={14} /> {label("Join Community", "加入社区")}
           </a>
+          <div className="flex items-center gap-2 border-l border-cream/15 pl-5">
+            {SOCIALS.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.label}
+                title={social.label}
+                className="flex h-9 w-9 items-center justify-center border border-cream/20 text-cream/65 transition hover:border-amber hover:text-amber"
+              >
+                <SocialIcon type={social.icon} />
+              </a>
+            ))}
+          </div>
         </nav>
 
         <div className="flex items-center lg:hidden">
@@ -104,6 +125,20 @@ export default function Navbar() {
               >
                 <Send size={14} /> {label("Join Community", "加入社区")}
               </a>
+              <div className="mt-3 flex gap-2 border-t border-cream/10 pt-4">
+                {SOCIALS.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={social.label}
+                    className="flex h-10 w-10 items-center justify-center border border-cream/20 text-cream/65 transition hover:border-amber hover:text-amber"
+                  >
+                    <SocialIcon type={social.icon} />
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.nav>
         )}

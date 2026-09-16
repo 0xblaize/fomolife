@@ -1,5 +1,5 @@
-import { Send, AlertTriangle } from "lucide-react";
-import { TELEGRAM } from "../data";
+import { Send, AlertTriangle, Globe2 } from "lucide-react";
+import { SOCIALS, TELEGRAM } from "../data";
 import { Reveal } from "./ui";
 import { copy, useLanguage } from "../i18n";
 
@@ -9,12 +9,18 @@ function LogoLockup() {
   return <img src="/image.png" alt="FOMO Life logo" className="mx-auto h-20 w-20 rounded-full border border-gold/50 object-cover shadow-[0_0_35px_rgba(217,166,42,0.35)]" />;
 }
 
+function SocialIcon({ type }: { type: (typeof SOCIALS)[number]["icon"] }) {
+  if (type === "telegram") return <Send size={17} />;
+  if (type === "debox") return <Globe2 size={17} />;
+  return <span className="text-base font-black leading-none" aria-hidden="true">𝕏</span>;
+}
+
 export default function Footer() {
   const { isZh } = useLanguage();
   return (
 
     <footer className="border-t border-gold/25 bg-void">
-      <div className="mx-auto w-full px-4 py-16 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-8 lg:px-12">
         <Reveal>
           <div className="text-center">
             <LogoLockup />
@@ -33,6 +39,21 @@ export default function Footer() {
             >
               <Send size={16} /> {label("Join Telegram", "加入 Telegram", isZh)}
             </a>
+            <div className="mt-5 flex justify-center gap-2">
+              {SOCIALS.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.label}
+                  title={social.label}
+                  className="flex h-10 w-10 items-center justify-center border border-cream/20 text-cream/65 transition hover:border-amber hover:text-amber"
+                >
+                  <SocialIcon type={social.icon} />
+                </a>
+              ))}
+            </div>
           </div>
         </Reveal>
 
