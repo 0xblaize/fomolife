@@ -14,7 +14,7 @@ const FLOW = [
 export default function Ido() {
   return (
     <section id="ido" className="border-y border-blood/25 bg-gradient-to-b from-blood/10 via-transparent to-transparent">
-      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6">
+      <div className="mx-auto w-full px-4 py-24 sm:px-6">
         <SectionHead
           kicker="Launch Structure"
           title={<>FOMO LIFE <span className="text-glow-red text-blood">IDO</span></>}

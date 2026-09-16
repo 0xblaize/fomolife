@@ -9,7 +9,7 @@ export default function Vault() {
   return (
     <section id="vault" className="relative overflow-hidden">
       <div className="circuit-bg absolute inset-0 opacity-60" />
-      <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6">
+      <div className="relative mx-auto w-full px-4 py-24 sm:px-6">
         <SectionHead
           kicker="The Core Engine"
           title={<>THE FOMO <span className="text-glow-gold text-gold">VAULT</span></>}

@@ -31,7 +31,7 @@ export default function Navbar() {
         scrolled ? "border-b border-cream/15 bg-void/95 backdrop-blur-xl" : "bg-void/35 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
+      <div className="mx-auto flex w-full items-center justify-between px-4 py-4 sm:px-6">
         <a href="#top" className="flex items-center gap-3">
           <img src="/image.png" alt="FOMO Life logo" className="h-11 w-11 rounded-full border border-gold/50 object-cover shadow-[0_0_24px_rgba(217,166,42,0.35)]" />
           <div className="leading-tight">

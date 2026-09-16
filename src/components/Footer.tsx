@@ -14,7 +14,7 @@ export default function Footer() {
   return (
 
     <footer className="border-t border-gold/25 bg-void">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <div className="mx-auto w-full px-4 py-16 sm:px-8 lg:px-12">
         <Reveal>
           <div className="text-center">
             <LogoLockup />
