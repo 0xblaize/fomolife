@@ -1,94 +1,75 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowDownRight, Flame, Send, ShieldCheck, Sparkles, Vault } from "lucide-react";
+import { ArrowUpRight, Flame, Send, ShieldCheck, Vault } from "lucide-react";
 import { MARQUEE_ITEMS, TELEGRAM } from "../data";
-import { GoldButton } from "./ui";
 import { copy, useLanguage } from "../i18n";
+import { GoldButton } from "./ui";
 
 function EmberCanvas() {
   const ref = useRef<HTMLCanvasElement>(null);
-
   useEffect(() => {
     const canvas = ref.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    let w = (canvas.width = canvas.offsetWidth * devicePixelRatio);
-    let h = (canvas.height = canvas.offsetHeight * devicePixelRatio);
-    ctx.scale(devicePixelRatio, devicePixelRatio);
-    w /= devicePixelRatio;
-    h /= devicePixelRatio;
-    const parts = Array.from({ length: 85 }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: Math.random() * 1.8 + 0.35,
-      vy: -(Math.random() * 0.55 + 0.08),
-      vx: (Math.random() - 0.5) * 0.18,
-      gold: Math.random() > 0.32,
-      a: Math.random() * 0.52 + 0.14,
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
+    let width = canvas.offsetWidth;
+    let height = canvas.offsetHeight;
+    const particles = Array.from({ length: 24 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      speed: Math.random() * .35 + .08,
+      size: Math.random() * 1.5 + .4,
+      alpha: Math.random() * .4 + .15,
     }));
-    let raf = 0;
-    const tick = () => {
-      ctx.clearRect(0, 0, w, h);
-      for (const p of parts) {
-        p.y += p.vy;
-        p.x += p.vx;
-        if (p.y < -4) {
-          p.y = h + 4;
-          p.x = Math.random() * w;
-        }
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.gold ? `rgba(255,176,0,${p.a})` : `rgba(255,74,61,${p.a})`;
-        ctx.shadowBlur = 14;
-        ctx.shadowColor = p.gold ? "#FFB000" : "#FF4A3D";
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
-      raf = requestAnimationFrame(tick);
+    const resize = () => {
+      width = canvas.offsetWidth;
+      height = canvas.offsetHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
-    tick();
-    const onR = () => {
-      w = canvas.width = canvas.offsetWidth * devicePixelRatio;
-      h = canvas.height = canvas.offsetHeight * devicePixelRatio;
-      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+    resize();
+    let frame = 0;
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach((particle) => {
+        particle.y -= particle.speed;
+        if (particle.y < -4) particle.y = height + 4;
+        ctx.fillStyle = `rgba(224,179,106,${particle.alpha})`;
+        ctx.fillRect(particle.x, particle.y, particle.size, particle.size);
+      });
+      frame = requestAnimationFrame(draw);
     };
-    window.addEventListener("resize", onR);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", onR);
-    };
+    draw();
+    window.addEventListener("resize", resize);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener("resize", resize); };
   }, []);
-
   return <canvas ref={ref} className="absolute inset-0 h-full w-full opacity-70" />;
 }
 
-function VaultCore() {
+function LiquidVault() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[560px]">
-      <div className="absolute inset-[8%] rounded-full border border-gold/10 bg-[radial-gradient(circle_at_50%_45%,rgba(255,176,0,0.18),rgba(255,74,61,0.04)_32%,transparent_64%)] shadow-[0_0_120px_rgba(255,140,0,0.12)]" />
-      <div className="vault-orbit absolute inset-[7%] rounded-full border border-dashed border-gold/30" />
-      <div className="vault-orbit-reverse absolute inset-[19%] rounded-full border border-blood/25" />
-      <div className="absolute inset-[30%] rounded-full border border-gold/50 bg-void/80 p-2 shadow-[0_0_70px_rgba(255,176,0,0.3)]">
-        <div className="flex h-full flex-col items-center justify-center rounded-full border border-gold/20 bg-[radial-gradient(circle,rgba(255,176,0,0.16),transparent_65%)] text-center">
-          <Vault className="mb-3 text-amber" size={34} strokeWidth={1.2} />
-          <span className="font-display text-2xl font-black tracking-[0.12em] text-cream">VAULT</span>
-          <span className="mt-1 text-[9px] font-bold tracking-[0.35em] text-gold/70">PROTOCOL CORE</span>
+    <div className="relative mx-auto aspect-square w-full max-w-[640px]">
+      <div className="hero-drops" />
+      <div className="absolute inset-[10%] rounded-full border border-amber/15 bg-[radial-gradient(circle_at_50%_42%,rgba(224,179,106,.18),rgba(198,74,55,.06)_30%,transparent_68%)]" />
+      <div className="vault-orbit absolute inset-[9%] rounded-full border border-dashed border-amber/30" />
+      <div className="vault-orbit-reverse absolute inset-[21%] rounded-full border border-cream/15" />
+      <div className="absolute inset-[32%] rounded-full border border-amber/45 bg-void p-2 shadow-[0_0_55px_rgba(200,146,75,.16)]">
+        <div className="flex h-full flex-col items-center justify-center rounded-full border border-amber/15 bg-[radial-gradient(circle,rgba(224,179,106,.13),transparent_66%)] text-center">
+          <Vault size={38} strokeWidth={1} className="mb-3 text-amber" />
+          <span className="font-display text-2xl font-black tracking-[.15em] text-cream">VAULT</span>
+          <span className="mt-2 text-[9px] font-bold tracking-[.3em] text-amber/65">ETERNAL / 001</span>
         </div>
       </div>
-      <div className="absolute top-[10%] right-[2%] w-36 border border-gold/25 bg-void/90 p-3 backdrop-blur-md sm:w-44">
-        <div className="flex items-center justify-between text-[9px] font-bold tracking-[0.2em] text-cream/45 uppercase"><span>Network</span><span className="text-gold">01</span></div>
-        <div className="mt-3 flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-amber shadow-[0_0_8px_#ffb000]" /><span className="text-[10px] font-bold tracking-wider text-cream">CONSENSUS LIVE</span></div>
-        <div className="mt-3 h-1 bg-white/10"><div className="h-full w-[72%] bg-gradient-to-r from-gold to-blood" /></div>
+      <div className="absolute top-[12%] right-0 border-l border-amber/50 bg-char/90 px-4 py-3">
+        <p className="text-[9px] font-bold tracking-[.24em] text-cream/45 uppercase">System state</p>
+        <p className="mt-2 flex items-center gap-2 text-xs font-bold tracking-wider text-cream"><span className="h-1.5 w-1.5 rounded-full bg-amber" /> FORMING CONSENSUS</p>
       </div>
-      <div className="absolute bottom-[12%] left-0 w-44 border border-blood/30 bg-void/90 p-3 backdrop-blur-md sm:w-52">
-        <div className="flex items-center gap-2 text-[9px] font-bold tracking-[0.2em] text-blood uppercase"><Flame size={13} /> Deflation layer</div>
-        <p className="mt-2 font-display text-xl font-black text-cream">50% <span className="font-body text-[9px] font-bold tracking-widest text-cream/45">TAX BURN</span></p>
+      <div className="absolute bottom-[12%] left-0 border-l border-blood/60 bg-char/90 px-4 py-3">
+        <p className="flex items-center gap-2 text-[9px] font-bold tracking-[.24em] text-blood uppercase"><Flame size={13} /> Deflation layer</p>
+        <p className="mt-2 font-display text-2xl font-black text-cream">50% <span className="font-body text-[9px] tracking-widest text-cream/45">BURNED</span></p>
       </div>
-      <div className="absolute top-1/2 left-[1%] flex -translate-y-1/2 items-center gap-2 text-[9px] font-bold tracking-[0.3em] text-gold/70 uppercase [writing-mode:vertical-rl]">
-        <span>Stake</span><span className="text-blood">◆</span><span>Compete</span>
-      </div>
-      <div className="absolute right-[7%] bottom-[8%] flex items-center gap-2 text-[9px] font-bold tracking-[0.25em] text-cream/45 uppercase"><ShieldCheck size={13} className="text-gold" /> Rules on-chain</div>
+      <div className="absolute right-[8%] bottom-[5%] flex items-center gap-2 text-[9px] font-bold tracking-[.24em] text-cream/45 uppercase"><ShieldCheck size={13} className="text-amber" /> Rules on-chain</div>
     </div>
   );
 }
@@ -96,46 +77,35 @@ function VaultCore() {
 export default function Hero() {
   const { isZh } = useLanguage();
   const label = (en: string, zh: string) => copy(en, zh, isZh);
-
   return (
     <section id="top" className="hero-shell relative flex min-h-screen flex-col overflow-hidden">
-      <div className="circuit-bg absolute inset-0 opacity-70" />
-      <div className="hero-scan absolute inset-0" />
+      <div className="hero-grid absolute inset-0" />
       <EmberCanvas />
-      <div className="pointer-events-none absolute -top-20 left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,176,0,0.13),transparent_66%)] blur-2xl" />
-
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 items-center gap-8 px-5 pt-28 pb-14 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-2 lg:pt-28">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 items-center gap-8 px-5 pt-28 pb-16 sm:px-8 lg:grid-cols-[.9fr_1.1fr] lg:gap-0 lg:pt-24">
         <div className="max-w-2xl">
-          <motion.div initial={{ opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="mb-7 flex items-center gap-3 text-[10px] font-black tracking-[0.35em] text-gold uppercase">
-            <span className="h-px w-10 bg-gradient-to-r from-transparent to-gold" />
-            {copy("Protocol / 001", "协议 / 001", isZh)}
-            <span className="text-blood">●</span>
-            {label("Now forming", "正在形成")}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .5 }} className="mb-8 flex items-center gap-3 text-[10px] font-bold tracking-[.3em] text-amber uppercase">
+            <span className="h-px w-12 bg-amber/60" /> {label("FOMO LIFE / PROTOCOL 001", "FOMO人生 / 协议 001")}
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-7 inline-flex items-center gap-3 border border-blood/40 bg-blood/5 px-4 py-2 text-[10px] font-bold tracking-[0.28em] text-cream/75 uppercase">
-            <Sparkles size={13} className="text-blood" /> {label("FOMO人生 · Fear Of Missing Out", "FOMO人生 · 害怕错过")}
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.12, ease: [0.16, 1, 0.3, 1] }} className="font-display text-[clamp(3.8rem,9vw,8.8rem)] font-black leading-[0.82] tracking-[-0.07em] text-cream">
+          <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55, delay: .1 }} className="mb-6 text-xs font-bold tracking-[.22em] text-cream/55 uppercase">{label("FOMO人生 · Fear Of Missing Out", "FOMO人生 · 害怕错过")}</motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, delay: .16 }} className="font-display text-[clamp(4.2rem,10vw,9.4rem)] font-black leading-[.8] tracking-[-.08em] text-cream">
             FOMO
-            <span className="hero-word block bg-gradient-to-r from-gold via-amber to-blood bg-clip-text text-transparent">LIFE</span>
+            <span className="block text-amber">LIFE</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} className="mt-7 max-w-xl text-base leading-relaxed text-cream/62 sm:text-lg">
-            {label("A brilliant life, built around an on-chain vault where participation becomes position, position becomes pressure, and the protocol decides the rest.", "围绕链上金库构建的美好人生：参与成为位置，位置形成压力，一切由协议规则决定。")}
-          </motion.p>
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.44 }} className="mt-9 flex flex-wrap items-center gap-3">
+          <motion.div initial={{ opacity: 0, scaleX: 0 }} animate={{ opacity: 1, scaleX: 1 }} transition={{ duration: .7, delay: .35 }} className="mt-8 h-px w-28 origin-left bg-gradient-to-r from-amber to-transparent" />
+          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .6, delay: .4 }} className="mt-7 max-w-lg text-base leading-relaxed text-cream/62 sm:text-lg">{label("A decentralized on-chain ecosystem built around a vault, a native token, fixed Genesis positions and community consensus.", "一个围绕链上金库、原生代币、固定创世席位与社区共识构建的去中心化生态。")}</motion.p>
+          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .6, delay: .52 }} className="mt-9 flex flex-wrap items-center gap-3">
             <GoldButton href="#vault"><span className="flex items-center gap-2"><Vault size={15} /> {label("Enter the Vault", "进入金库")}</span></GoldButton>
-            <GoldButton href="#pillars" ghost>Explore the Protocol</GoldButton>
-            <a href={TELEGRAM} target="_blank" rel="noreferrer" className="group flex items-center gap-2 px-3 py-3 text-[10px] font-black tracking-[0.24em] text-cream/55 uppercase transition hover:text-cream"><Send size={14} className="text-gold transition group-hover:translate-x-0.5" /> Community <ArrowDownRight size={13} className="text-blood" /></a>
+            <GoldButton href="#pillars" ghost>{label("Explore the Protocol", "探索协议")}</GoldButton>
+            <a href={TELEGRAM} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-2 py-3 text-[10px] font-bold tracking-[.2em] text-cream/48 uppercase transition hover:text-cream"><Send size={14} className="text-amber" /> {label("Community", "社区")} <ArrowUpRight size={13} /></a>
           </motion.div>
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.65 }} className="mt-12 grid max-w-xl grid-cols-2 border-y border-gold/20 sm:grid-cols-4">
-            {[['03%', 'BUY / SELL TAX'], ['50%', 'TAX BURNED'], ['300', 'FIXED GENESIS'], ['5%', 'CLAIM FEE']].map(([value, label]) => <div key={label} className="border-r border-gold/15 px-3 py-4 first:pl-0 last:border-0"><p className="font-display text-2xl font-black text-gold">{value}</p><p className="mt-1 text-[8px] font-bold leading-tight tracking-[0.15em] text-cream/38">{label}</p></div>)}
-          </motion.div>
+          <div className="mt-12 grid max-w-xl grid-cols-2 border-y border-cream/15 sm:grid-cols-4">
+            {[['3%', 'BUY / SELL TAX', '买卖税'], ['50%', 'TAX BURNED', '税费销毁'], ['300', 'GENESIS POSITIONS', '创世席位'], ['5%', 'CLAIM FEE', '领取费用']].map(([value, en, zh]) => <div key={en} className="border-r border-cream/10 px-3 py-4 first:pl-0 last:border-0"><p className="font-display text-2xl font-black text-amber">{value}</p><p className="mt-1 text-[8px] font-bold leading-tight tracking-[.14em] text-cream/38">{label(en, zh)}</p></div>)}
+          </div>
         </div>
-        <motion.div initial={{ opacity: 0, scale: 0.88 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }} className="hidden lg:block"><VaultCore /></motion.div>
+        <motion.div initial={{ opacity: 0, scale: .94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .9, delay: .2 }} className="hidden lg:block"><LiquidVault /></motion.div>
       </div>
-
-      <div className="relative z-10 border-y border-gold/20 bg-char/75 py-3 backdrop-blur-sm">
-        <div className="animate-marquee flex w-max gap-8 whitespace-nowrap">{[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((m, i) => <span key={i} className="flex items-center gap-8 text-[10px] font-black tracking-[0.28em] text-gold/75 uppercase">{m}<span className="text-blood">◆</span></span>)}</div>
+      <div className="relative z-10 overflow-hidden border-y border-cream/12 bg-char/70 py-3">
+        <div className="animate-marquee flex w-max gap-8 whitespace-nowrap">{[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, index) => <span key={index} className="flex items-center gap-8 text-[10px] font-bold tracking-[.25em] text-cream/48 uppercase">{item}<span className="text-blood">◆</span></span>)}</div>
       </div>
     </section>
   );

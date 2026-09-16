@@ -63,13 +63,18 @@ export default function Navbar() {
           </a>
         </nav>
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="text-gold lg:hidden"
-          aria-label="Menu"
-        >
+        <div className="flex items-center lg:hidden">
+          <button type="button" onClick={toggle} className="lang-toggle" aria-label={label("Switch to Chinese", "切换英文")}>
+            <span className={isZh ? "active" : ""}>中</span><span className={!isZh ? "active" : ""}>EN</span>
+          </button>
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-cream/75"
+            aria-label="Menu"
+          >
           {open ? <X size={26} /> : <Menu size={26} />}
-        </button>
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
