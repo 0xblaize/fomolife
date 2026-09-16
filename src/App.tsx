@@ -14,7 +14,7 @@ import { useLanguage } from "./i18n";
 function LanguageDocument() {
   const { isZh } = useLanguage();
   useEffect(() => {
-    document.title = isZh ? "FOMO人生 — 美好人生" : "FOMO Life — A Brilliant Life | FOMO人生";
+    document.title = isZh ? "FOMO人生 — 美好人生" : "FOMO Life | Brilliant Life | FOMO人生";
   }, [isZh]);
   return null;
 }
