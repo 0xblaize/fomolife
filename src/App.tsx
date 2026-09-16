@@ -8,11 +8,14 @@ import Ido from "./components/Ido";
 import Ecosystem from "./components/Ecosystem";
 import Faq from "./components/Faq";
 import Footer from "./components/Footer";
+import { useEffect } from "react";
 import { useLanguage } from "./i18n";
 
 function LanguageDocument() {
   const { isZh } = useLanguage();
-  document.title = isZh ? "FOMO人生 — 美好人生" : "FOMO Life — A Brilliant Life | FOMO人生";
+  useEffect(() => {
+    document.title = isZh ? "FOMO人生 — 美好人生" : "FOMO Life — A Brilliant Life | FOMO人生";
+  }, [isZh]);
   return null;
 }
 

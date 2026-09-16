@@ -2,6 +2,11 @@ import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import { copy, useLanguage } from "../i18n";
 
+export function LocalizedText({ en, zh }: { en: string; zh: string }) {
+  const { isZh } = useLanguage();
+  return <>{copy(en, zh, isZh)}</>;
+}
+
 export function Reveal({
   children,
   delay = 0,
@@ -28,16 +33,21 @@ export function SectionHead({
   kicker,
   title,
   sub,
+  kickerZh,
+  subZh,
 }: {
   kicker: string;
   title: ReactNode;
   sub?: string;
+  kickerZh?: string;
+  subZh?: string;
 }) {
+  const { isZh } = useLanguage();
   return (
     <div className="mx-auto mb-12 max-w-3xl text-center">
       <Reveal>
         <p className="mb-3 text-xs font-bold tracking-[0.35em] text-blood uppercase">
-          {kicker}
+          {copy(kicker, kickerZh ?? kicker, isZh)}
         </p>
       </Reveal>
       <Reveal delay={0.08}>
@@ -48,7 +58,7 @@ export function SectionHead({
       {sub && (
         <Reveal delay={0.16}>
           <p className="mt-4 text-sm leading-relaxed text-cream/60 sm:text-base">
-            {sub}
+            {copy(sub, subZh ?? sub, isZh)}
           </p>
         </Reveal>
       )}

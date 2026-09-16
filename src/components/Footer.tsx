@@ -1,19 +1,29 @@
 import { Send, AlertTriangle } from "lucide-react";
 import { TELEGRAM } from "../data";
 import { Reveal } from "./ui";
+import { copy, useLanguage } from "../i18n";
+
+const label = (en: string, zh: string, isZh: boolean) => copy(en, zh, isZh);
+
+function LogoLockup() {
+  return <img src="/image.png" alt="FOMO Life logo" className="mx-auto h-20 w-20 rounded-full border border-gold/50 object-cover shadow-[0_0_35px_rgba(217,166,42,0.35)]" />;
+}
 
 export default function Footer() {
+  const { isZh } = useLanguage();
   return (
+
     <footer className="border-t border-gold/25 bg-void">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <Reveal>
           <div className="text-center">
-            <p className="font-display text-4xl font-black text-cream sm:text-6xl">
+            <LogoLockup />
+            <p className="mt-5 font-display text-4xl font-black text-cream sm:text-6xl">
               FOMO LIFE
             </p>
-            <p className="mt-2 text-sm tracking-[0.4em] text-gold">FOMO人生 • A BRILLIANT LIFE</p>
+            <p className="mt-2 text-sm tracking-[0.4em] text-gold">FOMO人生 • {label("A BRILLIANT LIFE", "美好人生", isZh)}</p>
             <p className="mx-auto mt-4 max-w-xl text-sm text-cream/55">
-              A tribute to every holder who chooses faith over fear.
+              {label("A tribute to every holder who chooses faith over fear.", "致敬每一位选择信念而非恐惧的持有者。", isZh)}
             </p>
             <a
               href={TELEGRAM}
@@ -21,7 +31,7 @@ export default function Footer() {
               rel="noreferrer"
               className="mt-6 inline-flex items-center gap-2 bg-gradient-to-r from-gold to-amber px-8 py-4 text-sm font-black tracking-widest text-void uppercase"
             >
-              <Send size={16} /> t.me/FomoLife_Official
+              <Send size={16} /> {label("Join Telegram", "加入 Telegram", isZh)}
             </a>
           </div>
         </Reveal>
