@@ -22,23 +22,77 @@ export default function Hero() {
           {t("A BRILLIANT LIFE", "精彩人生")}
         </p>
 
-        <div className="relative w-64 h-64 md:w-80 md:h-80 mb-16 perspective-container flex items-center justify-center">
+        {/* 3D FOMO Visual with Logo */}
+        <div className="relative w-72 h-72 md:w-96 md:h-96 mb-16 perspective-container flex items-center justify-center">
+          {/* Outer rotating text ring */}
           <div className="absolute inset-0 preserve-3d flex items-center justify-center" style={{ animation: "float3D 20s linear infinite" }}>
-            <div className="absolute w-full h-full rounded-full border-[1px] border-gold/30 border-dashed preserve-3d" style={{ animation: "orbitX 16s linear infinite" }}>
-              <div className="absolute top-0 left-1/2 w-1.5 h-1.5 bg-gold rounded-full shadow-[0_0_15px_#D9A62A] -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute w-full h-full rounded-full border border-gold/20 border-dashed preserve-3d" style={{ animation: "orbitX 16s linear infinite" }}>
+              <div className="absolute top-0 left-1/2 w-2 h-2 bg-gold rounded-full shadow-[0_0_20px_#D9A62A] -translate-x-1/2 -translate-y-1/2" />
+              <div className="absolute bottom-0 left-1/2 w-1.5 h-1.5 bg-gold/50 rounded-full -translate-x-1/2 translate-y-1/2" />
             </div>
-            <div className="absolute w-[75%] h-[75%] rounded-full border border-amber/20 preserve-3d" style={{ animation: "orbitY 22s linear infinite reverse" }}>
-              <div className="absolute bottom-0 right-1/2 w-2 h-2 bg-amber rounded-full shadow-[0_0_20px_#FFB000] translate-x-1/2 translate-y-1/2" />
+
+            {/* Middle orbit ring */}
+            <div className="absolute w-[80%] h-[80%] rounded-full border border-amber/15 preserve-3d" style={{ animation: "orbitY 24s linear infinite reverse" }}>
+              <div className="absolute top-1/2 right-0 w-2.5 h-2.5 bg-amber rounded-full shadow-[0_0_20px_#FFB000] translate-x-1/2 -translate-y-1/2" />
+              <div className="absolute top-1/2 left-0 w-1.5 h-1.5 bg-amber/40 rounded-full -translate-x-1/2 -translate-y-1/2" />
             </div>
-            <div className="relative w-24 h-24 md:w-32 md:h-32 preserve-3d flex items-center justify-center" style={{ animation: "pulseCore 3.5s ease-in-out infinite" }}>
-              <div className="absolute inset-0 bg-void border border-gold/40 rotate-45 shadow-[inset_0_0_20px_rgba(217,166,42,0.2)]" style={{ transform: "translateZ(-25px)" }} />
-              <div className="absolute inset-2 bg-gradient-to-br from-void to-charcoal border border-amber/40 rotate-12 shadow-[0_0_30px_rgba(255,176,0,0.15)]" style={{ transform: "translateZ(5px)" }} />
-              <div className="absolute inset-6 bg-charcoal border border-ember rotate-45 flex items-center justify-center shadow-[0_0_35px_rgba(255,74,61,0.4)]" style={{ transform: "translateZ(35px)" }}>
-                <div className="w-3 h-3 bg-cream rounded-full shadow-[0_0_15px_#F6E8B5]" />
+
+            {/* Inner glow ring */}
+            <div className="absolute w-[60%] h-[60%] rounded-full border border-ember/10 preserve-3d" style={{ animation: "orbitX 12s linear infinite reverse" }}>
+              <div className="absolute top-0 right-1/4 w-1 h-1 bg-ember/60 rounded-full" />
+            </div>
+
+            {/* Center: FOMO Logo with glow */}
+            <div className="relative w-32 h-32 md:w-40 md:h-40 preserve-3d flex items-center justify-center" style={{ animation: "pulseCore 4s ease-in-out infinite" }}>
+              {/* Back diamond */}
+              <div
+                className="absolute inset-0 bg-void border border-gold/30 rotate-45 shadow-[inset_0_0_30px_rgba(217,166,42,0.15)]"
+                style={{ transform: "translateZ(-30px)" }}
+              />
+              {/* Middle diamond */}
+              <div
+                className="absolute inset-3 bg-gradient-to-br from-void to-charcoal border border-amber/30 rotate-[20deg] shadow-[0_0_40px_rgba(255,176,0,0.1)]"
+                style={{ transform: "translateZ(5px)" }}
+              />
+              {/* Front: FOMO Logo */}
+              <div
+                className="absolute inset-5 bg-charcoal border border-ember/50 rotate-45 flex items-center justify-center shadow-[0_0_50px_rgba(255,74,61,0.3)] overflow-hidden"
+                style={{ transform: "translateZ(40px)" }}
+              >
+                <img
+                  src="/image.png"
+                  alt="FOMO Life"
+                  className="w-[120%] h-[120%] object-cover -rotate-45 scale-110"
+                />
+                {/* Gold overlay glow */}
+                <div className="absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-gold/10" />
               </div>
             </div>
           </div>
-          <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-40 h-8 bg-ember/20 blur-2xl rounded-full" style={{ animation: "pulseShadow 3.5s ease-in-out infinite" }} />
+
+          {/* Floating "FOMO LIFE" text orbiting */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-[110%] h-[110%] relative" style={{ animation: "float3D 30s linear infinite" }}>
+              <span className="absolute top-0 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.5em] text-gold/30 font-light" style={{ transform: "translateZ(20px)" }}>
+                FOMO LIFE
+              </span>
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.5em] text-gold/20 font-light" style={{ transform: "translateZ(-20px)" }}>
+                FOMO LIFE
+              </span>
+              <span className="absolute top-1/2 left-0 -translate-y-1/2 -rotate-90 text-[9px] tracking-[0.5em] text-amber/20 font-light" style={{ transform: "translateZ(10px)" }}>
+                {t("BRILLIANT", "精彩")}
+              </span>
+              <span className="absolute top-1/2 right-0 -translate-y-1/2 rotate-90 text-[9px] tracking-[0.5em] text-amber/20 font-light" style={{ transform: "translateZ(-10px)" }}>
+                {t("BRILLIANT", "精彩")}
+              </span>
+            </div>
+          </div>
+
+          {/* Ground glow shadow */}
+          <div
+            className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-48 h-10 bg-ember/15 blur-3xl rounded-full"
+            style={{ animation: "pulseShadow 4s ease-in-out infinite" }}
+          />
         </div>
 
         <div className="flex flex-col sm:flex-row items-center gap-6 animate-fade-up delay-200">
