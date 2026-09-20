@@ -4,9 +4,8 @@ import Pillars from "./components/Pillars";
 import Vault from "./components/Vault";
 import Tokenomics from "./components/Tokenomics";
 import Nft from "./components/Nft";
-import Ido from "./components/Ido";
 import Ecosystem from "./components/Ecosystem";
-import Faq from "./components/Faq";
+import Roadmap from "./components/Roadmap";
 import Footer from "./components/Footer";
 import { useEffect } from "react";
 import { useLanguage } from "./i18n";
@@ -14,25 +13,24 @@ import { useLanguage } from "./i18n";
 function LanguageDocument() {
   const { isZh } = useLanguage();
   useEffect(() => {
-    document.title = isZh ? "FOMO人生 — 美好人生" : "FOMO Life | Brilliant Life | FOMO人生";
+    document.title = isZh ? "FOMO人生 — 美好人生" : "FOMO Life — A Brilliant Life";
   }, [isZh]);
   return null;
 }
 
 function App() {
   return (
-    <div className="min-h-screen bg-void text-cream antialiased">
+    <div className="min-h-screen bg-void text-cream noise antialiased">
       <LanguageDocument />
       <Navbar />
-      <main>
+      <main id="top">
         <Hero />
         <Pillars />
         <Vault />
-        <Tokenomics />
         <Nft />
-        <Ido />
+        <Tokenomics />
         <Ecosystem />
-        <Faq />
+        <Roadmap />
       </main>
       <Footer />
     </div>

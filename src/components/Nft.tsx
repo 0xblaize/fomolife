@@ -1,66 +1,81 @@
-import { Gem, BadgeCheck, ArrowLeftRight } from "lucide-react";
-import { NFT_TIERS } from "../data";
-import { Reveal, SectionHead } from "./ui";
-import { useLanguage } from "../i18n";
+import { Reveal } from "./ui";
+import { useLanguage, copy } from "../i18n";
+
+const TIERS = [
+  { tier: "LEADER", tierZh: "领袖", qty: "10", weight: "5" },
+  { tier: "GENERAL", tierZh: "将军", qty: "30", weight: "3" },
+  { tier: "COMMON", tierZh: "普通", qty: "260", weight: "2" },
+];
 
 export default function Nft() {
   const { isZh } = useLanguage();
-  const tierNames = ["领袖", "将军", "普通"];
-  const perks = ["最高分红权重，核心 10 个席位。", "为坚定建设者提供指挥级权重。", "广泛基础，共 260 个席位。"];
+  const label = (en: string, zh: string) => copy(en, zh, isZh);
+
   return (
-    <section id="nft" className="relative overflow-hidden">
-      <div className="pointer-events-none absolute top-0 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(217,166,42,0.12),transparent_70%)]" />
-      <div className="relative mx-auto w-full max-w-[1440px] px-4 py-24 sm:px-6">
-        <SectionHead
-          kicker={isZh ? "300 个固定席位" : "300 Fixed Positions"}
-          title={isZh ? <>FOMO LIFE <span className="text-glow-gold text-gold">创世</span></> : <>FOMO LIFE <span className="text-glow-gold text-gold">GENESIS</span></>}
-          sub={isZh ? "固定供应的权益与分红层。供应量永不增加，权益随所有权转移，可自由交易并永久稀缺。" : "A fixed-supply privilege and dividend layer. Supply will never increase. Benefits transfer with ownership — freely tradable, forever scarce."}
-        />
+    <section id="genesis" className="py-32 px-8 max-w-[1280px] mx-auto">
+      <div className="grid lg:grid-cols-12 gap-16">
+        {/* Left: Description */}
+        <div className="lg:col-span-5">
+          <Reveal>
+            <div className="w-12 h-px bg-gold/50 mb-8" />
+          </Reveal>
+          <Reveal delay={0.06}>
+            <p className="text-[10px] tracking-widest text-stone-500 mb-4">
+              {label("FIXED SCARCITY", "固定稀缺性")}
+            </p>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream mb-6">
+              {label("GENESIS NFT", "创世 NFT")}
+            </h2>
+          </Reveal>
+          <Reveal delay={0.18}>
+            <p className="text-stone-400 font-light leading-relaxed text-sm mb-12">
+              {label(
+                "A fixed-supply privilege and dividend layer within the FOMO Life ecosystem.",
+                "FOMO Life 生态系统内的固定供应特权和分红层。"
+              )}
+            </p>
+          </Reveal>
 
-        <Reveal>
-          <p className="mx-auto mb-10 flex max-w-xl items-center justify-center gap-3 text-center font-display text-6xl font-black text-gold sm:text-7xl">
-            300
-            <span className="text-left text-sm font-bold tracking-[0.25em] text-cream/60">{isZh ? <>固定<br />NFT</> : <>FIXED<br />NFTs</>}</span>
-          </p>
-        </Reveal>
-
-        <div className="grid gap-5 md:grid-cols-3">
-          {NFT_TIERS.map((n, i) => (
-            <Reveal key={n.tier} delay={i * 0.1}>
-              <div
-                className="group relative h-full overflow-hidden p-8 transition duration-300 hover:-translate-y-2"
-                style={{ border: `1px solid ${n.color}55`, background: `linear-gradient(160deg, ${n.color}14, transparent 55%), #0c0c0c` }}
-              >
-                <Gem size={36} style={{ color: n.color }} className="mb-4 transition group-hover:scale-110" />
-                <p className="text-[11px] font-black tracking-[0.3em]" style={{ color: n.color }}>
-                  {(isZh ? tierNames[i] : n.tier).toUpperCase()}
-                </p>
-                <p className="mt-2 font-display text-5xl font-black text-cream">
-                  {n.count}
-                  <span className="ml-2 align-middle text-sm font-bold text-cream/50">× weight {n.weight}</span>
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-cream/65">{isZh ? perks[i] : n.perk}</p>
-              </div>
-            </Reveal>
-          ))}
+          <Reveal delay={0.24}>
+            <div className="p-8 bg-charcoal/30 border-l border-ember/40">
+              <p className="text-xs text-stone-400 leading-relaxed">
+                {label(
+                  "10% of ecosystem staking profits are allocated to the permanent NFT dividend pool, distributed according to fixed tier weights and applicable on-chain rules.",
+                  "生态系统质押利润的 10% 分配给永久性 NFT 分红池，根据固定的等级权重和适用的链上规则进行分配。"
+                )}
+              </p>
+            </div>
+          </Reveal>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          {[
-            { icon: BadgeCheck, t: isZh ? "质押利润的 10%" : "10% of staking profits", d: isZh ? "分配给永久 NFT 分红池。" : "Allocated to the permanent NFT dividend pool." },
-            { icon: BadgeCheck, t: isZh ? "多签释放的 10%" : "10% of multisig releases", d: isZh ? "每次创世多签释放都会进入分红池。" : "Every Genesis multisig release feeds the dividend pool." },
-            { icon: ArrowLeftRight, t: isZh ? "可交易权益" : "Tradable rights", d: isZh ? "权益按照合约规则随所有权转移。" : "Benefits transfer with ownership per contract rules." },
-          ].map((b, i) => (
-            <Reveal key={b.t} delay={i * 0.08}>
-              <div className="flex h-full items-start gap-3 border border-gold/20 bg-void p-5">
-                <b.icon size={20} className="mt-0.5 shrink-0 text-gold" />
-                <div>
-                  <p className="text-sm font-bold text-cream">{b.t}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-cream/55">{b.d}</p>
-                </div>
+        {/* Right: Table */}
+        <div className="lg:col-span-7">
+          <Reveal>
+            <div className="border border-white/10 overflow-hidden">
+              {/* Header */}
+              <div className="grid grid-cols-3 bg-gold/10 p-6">
+                <span className="text-[10px] tracking-widest text-gold">{label("TIER", "等级")}</span>
+                <span className="text-[10px] tracking-widest text-gold">{label("QUANTITY", "数量")}</span>
+                <span className="text-[10px] tracking-widest text-gold text-right">{label("WEIGHT", "权重")}</span>
               </div>
-            </Reveal>
-          ))}
+              {/* Rows */}
+              {TIERS.map((t) => (
+                <div key={t.tier} className="grid grid-cols-3 p-6 border-t border-white/5 bg-void hover:bg-charcoal/40 transition-colors duration-300">
+                  <span className="text-sm text-cream font-light">{label(t.tier, t.tierZh)}</span>
+                  <span className="text-sm text-stone-400 font-mono">{t.qty}</span>
+                  <span className="text-sm text-stone-400 font-mono text-right">{t.weight}</span>
+                </div>
+              ))}
+              {/* Footer */}
+              <div className="grid grid-cols-3 p-6 border-t border-white/5 bg-charcoal/20">
+                <span className="text-[10px] tracking-widest text-stone-500">{label("TOTAL", "总计")}</span>
+                <span className="text-[10px] tracking-widest text-stone-500 font-mono">300</span>
+                <span className="text-[10px] tracking-widest text-stone-500 text-right">{label("NEVER INCREASED", "永不增发")}</span>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
