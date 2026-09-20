@@ -1,15 +1,15 @@
-import { useLanguage } from "../i18n";
-import { TELEGRAM } from "../data";
+import { useLanguage, copy } from "../i18n";
 
 const LINKS = [
-  { label: "VAULT", href: "#vault" },
-  { label: "TOKENOMICS", href: "#token" },
-  { label: "GENESIS NFT", href: "#genesis" },
-  { label: "ROADMAP", href: "#roadmap" },
+  { label: "VAULT", labelZh: "金库", href: "#vault" },
+  { label: "TOKENOMICS", labelZh: "代币经济", href: "#token" },
+  { label: "GENESIS NFT", labelZh: "创世 NFT", href: "#genesis" },
+  { label: "ROADMAP", labelZh: "路线图", href: "#roadmap" },
 ];
 
 export default function Navbar() {
   const { isZh, toggle } = useLanguage();
+  const t = (en: string, zh: string) => copy(en, zh, isZh);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-8 py-6 flex items-center justify-between bg-void/80 backdrop-blur-md border-b border-white/5">
@@ -20,7 +20,7 @@ export default function Navbar() {
           className="w-8 h-8 rounded-full border border-gold/40 object-cover transition-colors duration-300 group-hover:border-gold"
         />
         <span className="tracking-widest font-light text-xs text-cream/90">
-          FOMO<span className="text-gold/80"> LIFE</span>
+          FOMO<span className="text-gold/80"> {t("LIFE", "人生")}</span>
         </span>
       </a>
 
@@ -31,7 +31,7 @@ export default function Navbar() {
             href={l.href}
             className="hover:text-cream transition-colors duration-300"
           >
-            {l.label}
+            {t(l.label, l.labelZh)}
           </a>
         ))}
       </nav>
@@ -45,12 +45,12 @@ export default function Navbar() {
           {isZh ? "中文 / EN" : "EN / 中文"}
         </button>
         <a
-          href={TELEGRAM}
+          href="https://t.me/FOMOLIFE_ERC"
           target="_blank"
           rel="noreferrer"
           className="hidden md:inline-block text-[10px] tracking-widest text-gold/80 border border-gold/30 px-5 py-2 hover:bg-gold/5 transition-all duration-300"
         >
-          JOIN
+          {t("JOIN TG", "加入 TG")}
         </a>
       </div>
     </header>

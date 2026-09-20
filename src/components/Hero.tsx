@@ -3,7 +3,7 @@ import { useLanguage, copy } from "../i18n";
 
 export default function Hero() {
   const { isZh } = useLanguage();
-  const label = (en: string, zh: string) => copy(en, zh, isZh);
+  const t = (en: string, zh: string) => copy(en, zh, isZh);
 
   return (
     <section id="top" className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden">
@@ -11,15 +11,15 @@ export default function Hero() {
 
       <div className="relative z-10 text-center flex flex-col items-center animate-fade-up">
         <p className="text-gold/70 tracking-[0.4em] text-[10px] mb-8 font-light">
-          {label("A BRILLIANT LIFE", "精彩人生")}
+          {t("A BRILLIANT LIFE", "精彩人生")}
         </p>
 
         <h1 className="text-6xl md:text-8xl lg:text-[110px] leading-tight font-light tracking-wider text-cream mb-4">
-          FOMO {label("LIFE", "人生")}
+          FOMO {t("LIFE", "人生")}
         </h1>
 
         <p className="text-xl md:text-2xl text-stone-500 font-light tracking-[0.3em] mb-16">
-          {label("A BRILLIANT LIFE", "精彩人生")}
+          {t("A BRILLIANT LIFE", "精彩人生")}
         </p>
 
         <div className="relative w-64 h-64 md:w-80 md:h-80 mb-16 perspective-container flex items-center justify-center">
@@ -43,17 +43,17 @@ export default function Hero() {
 
         <div className="flex flex-col sm:flex-row items-center gap-6 animate-fade-up delay-200">
           <GoldButton href="#vault">
-            {label("ENTER VAULT", "进入金库")}
+            {t("CHECK VAULT", "查看金库")}
           </GoldButton>
           <GoldButton href="#community" ghost>
-            {label("JOIN COMMUNITY", "加入社区")}
+            {t("JOIN COMMUNITY", "加入社区")}
           </GoldButton>
         </div>
       </div>
 
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-center animate-fade-up delay-300">
         <p className="text-[9px] tracking-[0.4em] text-stone-600 uppercase">
-          {label("FEAR OF MISSING OUT", "错失恐惧症")}
+          {t("FEAR OF MISSING OUT", "错失恐惧症")}
         </p>
       </div>
 

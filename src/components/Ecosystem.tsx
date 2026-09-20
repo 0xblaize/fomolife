@@ -11,7 +11,7 @@ function SocialIcon({ type }: { type: string }) {
 
 export default function Ecosystem() {
   const { isZh } = useLanguage();
-  const label = (en: string, zh: string) => copy(en, zh, isZh);
+  const t = (en: string, zh: string) => copy(en, zh, isZh);
 
   return (
     <section id="community" className="py-32 px-8 max-w-[1280px] mx-auto text-center">
@@ -20,12 +20,12 @@ export default function Ecosystem() {
       </Reveal>
       <Reveal delay={0.06}>
         <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream mb-4">
-          {label("COMMUNITY IS CONSENSUS", "社区就是共识")}
+          {t("COMMUNITY IS CONSENSUS", "社区就是共识")}
         </h2>
       </Reveal>
       <Reveal delay={0.12}>
         <p className="text-[10px] tracking-widest text-stone-500 mb-20 uppercase">
-          {label("CONSENSUS = ECOSYSTEM MOMENTUM", "共识 = 生态动力")}
+          {t("CONSENSUS = ECOSYSTEM MOMENTUM", "共识 = 生态动力")}
         </p>
       </Reveal>
 
@@ -37,11 +37,11 @@ export default function Ecosystem() {
           <div className="text-center z-10 bg-void px-4 py-2">
             <span className="block text-sm tracking-widest text-gold/80 mb-2">FOMO LIFE</span>
             <span className="text-[9px] tracking-widest text-stone-500">
-              {label("30 OFFLINE STUDIOS", "30 个线下工作室")}
+              {t("30 OFFLINE STUDIOS", "30 个线下工作室")}
             </span>
             <br />
             <span className="text-[9px] tracking-widest text-stone-500">
-              {label("500 ONLINE COMMUNITIES", "500 个线上社区")}
+              {t("500 ONLINE COMMUNITIES", "500 个线上社区")}
             </span>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function Ecosystem() {
             >
               <SocialIcon type={s.icon} />
               <span className="text-[10px] tracking-widest text-cream uppercase">
-                {label(s.label, s.label)}
+                {t(s.label === "X" ? "X / TWITTER" : s.label === "Telegram" ? "TELEGRAM" : "DEBOX", s.label === "X" ? "X / 推特" : s.label === "Telegram" ? "电报" : "DEBOX")}
               </span>
             </a>
           </Reveal>

@@ -1,5 +1,6 @@
 import { Reveal } from "./ui";
 import { useLanguage, copy } from "../i18n";
+import { Landmark, Coins, Gem, Orbit } from "lucide-react";
 
 const PILLARS = [
   { icon: "landmark" as const, t: "FOMO VAULT", tZh: "FOMO 金库", d: "The competitive on-chain engine.", dZh: "具有竞争力的链上引擎。" },
@@ -8,22 +9,21 @@ const PILLARS = [
   { icon: "orbit" as const, t: "COMMUNITY", tZh: "社区", d: "Consensus drives momentum.", dZh: "共识驱动动力。" },
 ];
 
-import { Landmark, Coins, Gem, Orbit } from "lucide-react";
 const ICON_MAP = { landmark: Landmark, coins: Coins, gem: Gem, orbit: Orbit };
 
 export default function Pillars() {
   const { isZh } = useLanguage();
-  const label = (en: string, zh: string) => copy(en, zh, isZh);
+  const t = (en: string, zh: string) => copy(en, zh, isZh);
 
   return (
     <section className="py-32 px-8 max-w-[1280px] mx-auto">
       <div className="mb-20">
         <div className="w-12 h-px bg-gold/50 mb-8" />
         <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream">
-          {label("WHAT IS FOMO LIFE?", "什么是 FOMO LIFE？")}
+          {t("WHAT IS FOMO LIFE?", "什么是 FOMO LIFE？")}
         </h2>
         <p className="mt-6 text-stone-400 font-light leading-relaxed max-w-2xl text-sm md:text-base">
-          {label(
+          {t(
             "A decentralized on-chain ecosystem built around participation, staking, rewards, deflationary mechanics and community consensus.",
             "一个围绕参与、质押、奖励、通缩机制和社区共识构建的去中心化链上生态系统。"
           )}
@@ -38,10 +38,10 @@ export default function Pillars() {
               <div className="group p-10 bg-charcoal/50 border border-gold/10 hover:border-amber/30 transition-colors duration-500">
                 <Icon size={24} className="text-gold/60 mb-10" />
                 <h3 className="text-sm tracking-widest text-cream mb-4 font-light">
-                  {label(p.t, p.tZh)}
+                  {t(p.t, p.tZh)}
                 </h3>
                 <p className="text-xs text-stone-500 leading-relaxed">
-                  {label(p.d, p.dZh)}
+                  {t(p.d, p.dZh)}
                 </p>
               </div>
             </Reveal>

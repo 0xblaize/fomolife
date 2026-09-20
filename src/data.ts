@@ -60,11 +60,11 @@ export const NFT_TIERS = [
 ];
 
 export const ROADMAP = [
-  { phase: "01", title: "Foundation", items: ["Brand development", "Vault architecture", "Tokenomics finalization", "Smart-contract development", "Community foundation"] },
-  { phase: "02", title: "Deployment", items: ["Contract testing", "Security review & audit", "Butterfly launch", "Liquidity deployment"] },
-  { phase: "03", title: "Vault Activation", items: ["FOMO Vault opening", "Genesis NFT rollout", "Community campaigns", "Reward ecosystem activation"] },
-  { phase: "04", title: "Ecosystem Expansion", items: ["Governance development", "New utilities", "Strategic integrations", "Global expansion"] },
-  { phase: "05", title: "Long-Term Ecosystem", items: ["Protocol optimization", "Community infrastructure", "Decentralized products", "Ecosystem growth"] },
+  { phase: "01", title: "Foundation", titleZh: "基础建设", items: ["Brand development", "Vault architecture", "Tokenomics finalization", "Smart-contract development", "Community foundation"] },
+  { phase: "02", title: "Deployment", titleZh: "部署", items: ["Contract testing", "Security review & audit", "Butterfly launch", "Liquidity deployment"] },
+  { phase: "03", title: "Vault Activation", titleZh: "金库激活", items: ["FOMO Vault opening", "Genesis NFT rollout", "Community campaigns", "Reward ecosystem activation"] },
+  { phase: "04", title: "Ecosystem Expansion", titleZh: "扩张", items: ["Governance development", "New utilities", "Strategic integrations", "Global expansion"] },
+  { phase: "05", title: "Long-Term Ecosystem", titleZh: "长期", items: ["Protocol optimization", "Community infrastructure", "Decentralized products", "Ecosystem growth"] },
 ];
 
 export const FAQS = [

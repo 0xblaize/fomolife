@@ -10,7 +10,7 @@ const TAX_ITEMS = [
 
 export default function Tokenomics() {
   const { isZh } = useLanguage();
-  const label = (en: string, zh: string) => copy(en, zh, isZh);
+  const t = (en: string, zh: string) => copy(en, zh, isZh);
 
   return (
     <section id="token" className="py-32 px-8 bg-charcoal/20 border-y border-white/5">
@@ -21,7 +21,7 @@ export default function Tokenomics() {
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream">
-              {label("TOKEN ECONOMICS", "代币经济")}
+              {t("TOKEN ECONOMICS", "代币经济")}
             </h2>
           </Reveal>
         </div>
@@ -37,7 +37,7 @@ export default function Tokenomics() {
                 <div className="text-center">
                   <span className="block text-5xl font-light text-cream mb-2">3%</span>
                   <span className="text-[10px] tracking-widest text-stone-500">
-                    {label("BUY / SELL TAX", "买卖税")}
+                    {t("BUY / SELL TAX", "买卖税")}
                   </span>
                 </div>
               </motion.div>
@@ -49,17 +49,17 @@ export default function Tokenomics() {
               <Reveal key={item.label} delay={i * 0.1}>
                 <div className={`p-6 bg-void border-l-2 ${item.color}`}>
                   <p className="text-sm tracking-wider text-cream mb-1 font-light">
-                    {label(item.label, item.labelZh)}
+                    {t(item.label, item.labelZh)}
                   </p>
                   <p className="text-[10px] text-stone-500 tracking-widest uppercase">
-                    {label(item.desc, item.descZh)}
+                    {t(item.desc, item.descZh)}
                   </p>
                 </div>
               </Reveal>
             ))}
             <Reveal delay={0.3}>
               <p className="mt-4 text-[10px] tracking-widest text-stone-500 uppercase">
-                {label("PRICE SUPPORT: 0.01 BNB/minute", "价格支撑：0.01 BNB/分钟")}
+                {t("PRICE SUPPORT: 0.01 BNB/minute", "价格支撑：0.01 BNB/分钟")}
               </p>
             </Reveal>
           </div>
