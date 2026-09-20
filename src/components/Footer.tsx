@@ -18,14 +18,14 @@ export default function Footer() {
               FOMO<span className="text-gold/80"> LIFE</span>
             </div>
             <p className="text-[10px] tracking-widest text-stone-500 uppercase">
-              A BRILLIANT LIFE
+              {label("A BRILLIANT LIFE", "精彩人生")}
             </p>
           </div>
         </div>
 
         <div className="max-w-md">
           <p className="text-[10px] tracking-widest text-ember/80 mb-3 uppercase">
-            ANTI-SCAM NOTICE
+            {label("ANTI-SCAM NOTICE", "防骗防诈提示")}
           </p>
           <p className="text-xs text-stone-500 leading-relaxed">
             {label(
@@ -40,7 +40,7 @@ export default function Footer() {
             © 2024 FOMO LIFE
           </p>
           <p className="text-[10px] tracking-widest text-stone-600 uppercase">
-            MECHANISM FIRST
+            {label("MECHANISM FIRST", "机制优先")}
           </p>
         </div>
       </div>

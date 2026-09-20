@@ -23,12 +23,12 @@ export default function Vault() {
             </Reveal>
             <Reveal delay={0.06}>
               <p className="text-[10px] tracking-widest text-stone-500 mb-4">
-                THE CORE ENGINE
+                {label("THE CORE ENGINE", "核心引擎")}
               </p>
             </Reveal>
             <Reveal delay={0.12}>
               <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream mb-6">
-                FOMO VAULT
+                {label("FOMO VAULT", "FOMO 金库")}
               </h2>
             </Reveal>
             <Reveal delay={0.18}>

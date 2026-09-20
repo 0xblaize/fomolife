@@ -21,7 +21,7 @@ export default function Tokenomics() {
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream">
-              TOKEN ECONOMICS
+              {label("TOKEN ECONOMICS", "代币经济")}
             </h2>
           </Reveal>
         </div>
@@ -37,7 +37,7 @@ export default function Tokenomics() {
                 <div className="text-center">
                   <span className="block text-5xl font-light text-cream mb-2">3%</span>
                   <span className="text-[10px] tracking-widest text-stone-500">
-                    BUY / SELL TAX
+                    {label("BUY / SELL TAX", "买卖税")}
                   </span>
                 </div>
               </motion.div>
@@ -59,7 +59,7 @@ export default function Tokenomics() {
             ))}
             <Reveal delay={0.3}>
               <p className="mt-4 text-[10px] tracking-widest text-stone-500 uppercase">
-                PRICE SUPPORT: 0.01 BNB / minute
+                {label("PRICE SUPPORT: 0.01 BNB/minute", "价格支撑：0.01 BNB/分钟")}
               </p>
             </Reveal>
           </div>

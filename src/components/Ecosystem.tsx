@@ -20,12 +20,12 @@ export default function Ecosystem() {
       </Reveal>
       <Reveal delay={0.06}>
         <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream mb-4">
-          COMMUNITY IS CONSENSUS
+          {label("COMMUNITY IS CONSENSUS", "社区就是共识")}
         </h2>
       </Reveal>
       <Reveal delay={0.12}>
         <p className="text-[10px] tracking-widest text-stone-500 mb-20 uppercase">
-          CONSENSUS = ECOSYSTEM MOMENTUM
+          {label("CONSENSUS = ECOSYSTEM MOMENTUM", "共识 = 生态动力")}
         </p>
       </Reveal>
 
@@ -58,7 +58,7 @@ export default function Ecosystem() {
             >
               <SocialIcon type={s.icon} />
               <span className="text-[10px] tracking-widest text-cream uppercase">
-                {s.label === "X" ? "X / TWITTER" : s.label === "Telegram" ? "TELEGRAM" : "DEBOX"}
+                {label(s.label, s.label)}
               </span>
             </a>
           </Reveal>

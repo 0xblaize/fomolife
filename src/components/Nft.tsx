@@ -20,12 +20,12 @@ export default function Nft() {
           </Reveal>
           <Reveal delay={0.06}>
             <p className="text-[10px] tracking-widest text-stone-500 mb-4">
-              FIXED SCARCITY
+              {label("FIXED SCARCITY", "固定稀缺性")}
             </p>
           </Reveal>
           <Reveal delay={0.12}>
             <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream mb-6">
-              GENESIS NFT
+              {label("GENESIS NFT", "创世 NFT")}
             </h2>
           </Reveal>
           <Reveal delay={0.18}>
@@ -52,9 +52,9 @@ export default function Nft() {
           <Reveal>
             <div className="border border-white/10 overflow-hidden">
               <div className="grid grid-cols-3 bg-gold/10 p-6">
-                <span className="text-[10px] tracking-widest text-gold">TIER</span>
-                <span className="text-[10px] tracking-widest text-gold">QUANTITY</span>
-                <span className="text-[10px] tracking-widest text-gold text-right">WEIGHT</span>
+                <span className="text-[10px] tracking-widest text-gold">{label("TIER", "等级")}</span>
+                <span className="text-[10px] tracking-widest text-gold">{label("QUANTITY", "数量")}</span>
+                <span className="text-[10px] tracking-widest text-gold text-right">{label("WEIGHT", "权重")}</span>
               </div>
               {TIERS.map((t) => (
                 <div key={t.tier} className="grid grid-cols-3 p-6 border-t border-white/5 bg-void hover:bg-charcoal/40 transition-colors duration-300">
@@ -64,9 +64,9 @@ export default function Nft() {
                 </div>
               ))}
               <div className="grid grid-cols-3 p-6 border-t border-white/5 bg-charcoal/20">
-                <span className="text-[10px] tracking-widest text-stone-500">TOTAL</span>
+                <span className="text-[10px] tracking-widest text-stone-500">{label("TOTAL", "总计")}</span>
                 <span className="text-[10px] tracking-widest text-stone-500 font-mono">300</span>
-                <span className="text-[10px] tracking-widest text-stone-500 text-right">NEVER INCREASED</span>
+                <span className="text-[10px] tracking-widest text-stone-500 text-right">{label("NEVER INCREASED", "永不增发")}</span>
               </div>
             </div>
           </Reveal>

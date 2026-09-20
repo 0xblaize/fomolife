@@ -11,18 +11,17 @@ export default function Hero() {
 
       <div className="relative z-10 text-center flex flex-col items-center animate-fade-up">
         <p className="text-gold/70 tracking-[0.4em] text-[10px] mb-8 font-light">
-          A BRILLIANT LIFE
+          {label("A BRILLIANT LIFE", "精彩人生")}
         </p>
 
         <h1 className="text-6xl md:text-8xl lg:text-[110px] leading-tight font-light tracking-wider text-cream mb-4">
-          FOMO LIFE
+          FOMO {label("LIFE", "人生")}
         </h1>
 
         <p className="text-xl md:text-2xl text-stone-500 font-light tracking-[0.3em] mb-16">
-          {isZh ? "FOMO 人生" : "A BRILLIANT LIFE"}
+          {label("A BRILLIANT LIFE", "精彩人生")}
         </p>
 
-        {/* 3D FOMO Core */}
         <div className="relative w-64 h-64 md:w-80 md:h-80 mb-16 perspective-container flex items-center justify-center">
           <div className="absolute inset-0 preserve-3d flex items-center justify-center" style={{ animation: "float3D 20s linear infinite" }}>
             <div className="absolute w-full h-full rounded-full border-[1px] border-gold/30 border-dashed preserve-3d" style={{ animation: "orbitX 16s linear infinite" }}>
@@ -44,7 +43,7 @@ export default function Hero() {
 
         <div className="flex flex-col sm:flex-row items-center gap-6 animate-fade-up delay-200">
           <GoldButton href="#vault">
-            {label("CHECK VAULT", "进入金库")}
+            {label("ENTER VAULT", "进入金库")}
           </GoldButton>
           <GoldButton href="#community" ghost>
             {label("JOIN COMMUNITY", "加入社区")}
@@ -54,7 +53,7 @@ export default function Hero() {
 
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-center animate-fade-up delay-300">
         <p className="text-[9px] tracking-[0.4em] text-stone-600 uppercase">
-          FEAR OF MISSING OUT
+          {label("FEAR OF MISSING OUT", "错失恐惧症")}
         </p>
       </div>
 
