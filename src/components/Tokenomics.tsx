@@ -21,13 +21,12 @@ export default function Tokenomics() {
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream">
-              {label("TOKEN ECONOMICS", "代币经济")}
+              TOKEN ECONOMICS
             </h2>
           </Reveal>
         </div>
 
         <div className="grid md:grid-cols-2 gap-20 items-center max-w-4xl mx-auto">
-          {/* 3% Circle */}
           <Reveal>
             <div className="flex justify-center">
               <motion.div
@@ -38,14 +37,13 @@ export default function Tokenomics() {
                 <div className="text-center">
                   <span className="block text-5xl font-light text-cream mb-2">3%</span>
                   <span className="text-[10px] tracking-widest text-stone-500">
-                    {label("BUY / SELL TAX", "买卖税")}
+                    BUY / SELL TAX
                   </span>
                 </div>
               </motion.div>
             </div>
           </Reveal>
 
-          {/* Tax Cards */}
           <div className="flex flex-col gap-6">
             {TAX_ITEMS.map((item, i) => (
               <Reveal key={item.label} delay={i * 0.1}>
@@ -61,7 +59,7 @@ export default function Tokenomics() {
             ))}
             <Reveal delay={0.3}>
               <p className="mt-4 text-[10px] tracking-widest text-stone-500 uppercase">
-                {label("PRICE SUPPORT: 0.01 BNB/minute", "价格支撑：0.01 BNB/分钟")}
+                PRICE SUPPORT: 0.01 BNB / minute
               </p>
             </Reveal>
           </div>

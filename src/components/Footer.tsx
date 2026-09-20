@@ -7,7 +7,6 @@ export default function Footer() {
   return (
     <footer className="border-t border-gold/20 py-12 px-8">
       <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
-        {/* Brand */}
         <div className="flex items-center gap-4">
           <img
             src="/image.png"
@@ -19,15 +18,14 @@ export default function Footer() {
               FOMO<span className="text-gold/80"> LIFE</span>
             </div>
             <p className="text-[10px] tracking-widest text-stone-500 uppercase">
-              {label("A Brilliant Life", "精彩人生")}
+              A BRILLIANT LIFE
             </p>
           </div>
         </div>
 
-        {/* Anti-Scam */}
         <div className="max-w-md">
           <p className="text-[10px] tracking-widest text-ember/80 mb-3 uppercase">
-            {label("ANTI-SCAM NOTICE", "防骗防诈提示")}
+            ANTI-SCAM NOTICE
           </p>
           <p className="text-xs text-stone-500 leading-relaxed">
             {label(
@@ -37,13 +35,12 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Copyright */}
         <div className="md:text-right">
           <p className="text-[10px] tracking-widest text-stone-500 mb-2 uppercase">
             © 2024 FOMO LIFE
           </p>
           <p className="text-[10px] tracking-widest text-stone-600 uppercase">
-            {label("MECHANISM FIRST", "机制优先")}
+            MECHANISM FIRST
           </p>
         </div>
       </div>

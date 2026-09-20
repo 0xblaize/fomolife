@@ -11,7 +11,7 @@ export default function Hero() {
 
       <div className="relative z-10 text-center flex flex-col items-center animate-fade-up">
         <p className="text-gold/70 tracking-[0.4em] text-[10px] mb-8 font-light">
-          {label("A BRILLIANT LIFE", "精彩人生")}
+          A BRILLIANT LIFE
         </p>
 
         <h1 className="text-6xl md:text-8xl lg:text-[110px] leading-tight font-light tracking-wider text-cream mb-4">
@@ -19,56 +19,32 @@ export default function Hero() {
         </h1>
 
         <p className="text-xl md:text-2xl text-stone-500 font-light tracking-[0.3em] mb-16">
-          {isZh ? "FOMO LIFE" : "FOMO人生"}
+          {isZh ? "FOMO 人生" : "A BRILLIANT LIFE"}
         </p>
 
         {/* 3D FOMO Core */}
         <div className="relative w-64 h-64 md:w-80 md:h-80 mb-16 perspective-container flex items-center justify-center">
-          {/* Main Rotating Structure */}
           <div className="absolute inset-0 preserve-3d flex items-center justify-center" style={{ animation: "float3D 20s linear infinite" }}>
-            {/* Outer Gold Orbit */}
             <div className="absolute w-full h-full rounded-full border-[1px] border-gold/30 border-dashed preserve-3d" style={{ animation: "orbitX 16s linear infinite" }}>
               <div className="absolute top-0 left-1/2 w-1.5 h-1.5 bg-gold rounded-full shadow-[0_0_15px_#D9A62A] -translate-x-1/2 -translate-y-1/2" />
             </div>
-
-            {/* Inner Amber Orbit */}
             <div className="absolute w-[75%] h-[75%] rounded-full border border-amber/20 preserve-3d" style={{ animation: "orbitY 22s linear infinite reverse" }}>
               <div className="absolute bottom-0 right-1/2 w-2 h-2 bg-amber rounded-full shadow-[0_0_20px_#FFB000] translate-x-1/2 translate-y-1/2" />
             </div>
-
-            {/* 3D FOMO Core */}
             <div className="relative w-24 h-24 md:w-32 md:h-32 preserve-3d flex items-center justify-center" style={{ animation: "pulseCore 3.5s ease-in-out infinite" }}>
-              {/* Back layer */}
-              <div
-                className="absolute inset-0 bg-void border border-gold/40 rotate-45 shadow-[inset_0_0_20px_rgba(217,166,42,0.2)]"
-                style={{ transform: "translateZ(-25px)" }}
-              />
-              {/* Middle layer */}
-              <div
-                className="absolute inset-2 bg-gradient-to-br from-void to-charcoal border border-amber/40 rotate-12 shadow-[0_0_30px_rgba(255,176,0,0.15)]"
-                style={{ transform: "translateZ(5px)" }}
-              />
-              {/* Front core */}
-              <div
-                className="absolute inset-6 bg-charcoal border border-ember rotate-45 flex items-center justify-center shadow-[0_0_35px_rgba(255,74,61,0.4)]"
-                style={{ transform: "translateZ(35px)" }}
-              >
+              <div className="absolute inset-0 bg-void border border-gold/40 rotate-45 shadow-[inset_0_0_20px_rgba(217,166,42,0.2)]" style={{ transform: "translateZ(-25px)" }} />
+              <div className="absolute inset-2 bg-gradient-to-br from-void to-charcoal border border-amber/40 rotate-12 shadow-[0_0_30px_rgba(255,176,0,0.15)]" style={{ transform: "translateZ(5px)" }} />
+              <div className="absolute inset-6 bg-charcoal border border-ember rotate-45 flex items-center justify-center shadow-[0_0_35px_rgba(255,74,61,0.4)]" style={{ transform: "translateZ(35px)" }}>
                 <div className="w-3 h-3 bg-cream rounded-full shadow-[0_0_15px_#F6E8B5]" />
               </div>
             </div>
           </div>
-
-          {/* Ground shadow */}
-          <div
-            className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-40 h-8 bg-ember/20 blur-2xl rounded-full"
-            style={{ animation: "pulseShadow 3.5s ease-in-out infinite" }}
-          />
+          <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-40 h-8 bg-ember/20 blur-2xl rounded-full" style={{ animation: "pulseShadow 3.5s ease-in-out infinite" }} />
         </div>
 
-        {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center gap-6 animate-fade-up delay-200">
           <GoldButton href="#vault">
-            {label("ENTER VAULT", "进入金库")}
+            {label("CHECK VAULT", "进入金库")}
           </GoldButton>
           <GoldButton href="#community" ghost>
             {label("JOIN COMMUNITY", "加入社区")}
@@ -78,11 +54,10 @@ export default function Hero() {
 
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-center animate-fade-up delay-300">
         <p className="text-[9px] tracking-[0.4em] text-stone-600 uppercase">
-          {label("FEAR OF MISSING OUT", "错失恐惧症")}
+          FEAR OF MISSING OUT
         </p>
       </div>
 
-      {/* Gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-void to-transparent pointer-events-none" />
     </section>
   );

@@ -23,12 +23,12 @@ export default function Vault() {
             </Reveal>
             <Reveal delay={0.06}>
               <p className="text-[10px] tracking-widest text-stone-500 mb-4">
-                {label("THE CORE ENGINE", "核心引擎")}
+                THE CORE ENGINE
               </p>
             </Reveal>
             <Reveal delay={0.12}>
               <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream mb-6">
-                {label("FOMO VAULT", "FOMO 金库")}
+                FOMO VAULT
               </h2>
             </Reveal>
             <Reveal delay={0.18}>
@@ -45,10 +45,7 @@ export default function Vault() {
         <Reveal>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-white/5">
             {ALLOCATIONS.map((a) => (
-              <div
-                key={a.label}
-                className={`${a.span} p-10 bg-void flex flex-col justify-center items-center text-center ${a.border}`}
-              >
+              <div key={a.label} className={`${a.span} p-10 bg-void flex flex-col justify-center items-center text-center ${a.border}`}>
                 <span className="text-5xl font-light text-cream mb-4">{a.pct}</span>
                 <span className="text-[10px] tracking-widest text-stone-500 uppercase">
                   {label(a.label, a.labelZh)}

@@ -20,16 +20,15 @@ export default function Ecosystem() {
       </Reveal>
       <Reveal delay={0.06}>
         <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream mb-4">
-          {label("COMMUNITY IS CONSENSUS", "社区就是共识")}
+          COMMUNITY IS CONSENSUS
         </h2>
       </Reveal>
       <Reveal delay={0.12}>
         <p className="text-[10px] tracking-widest text-stone-500 mb-20 uppercase">
-          {label("CONSENSUS = ECOSYSTEM MOMENTUM", "共识 = 生态动力")}
+          CONSENSUS = ECOSYSTEM MOMENTUM
         </p>
       </Reveal>
 
-      {/* Network Visual */}
       <Reveal delay={0.18}>
         <div className="relative w-64 h-64 mx-auto mb-20 flex items-center justify-center">
           <div className="absolute inset-0 rounded-full border border-white/5" />
@@ -48,7 +47,6 @@ export default function Ecosystem() {
         </div>
       </Reveal>
 
-      {/* Social Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {SOCIALS.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08}>

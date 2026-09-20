@@ -14,19 +14,18 @@ export default function Nft() {
   return (
     <section id="genesis" className="py-32 px-8 max-w-[1280px] mx-auto">
       <div className="grid lg:grid-cols-12 gap-16">
-        {/* Left: Description */}
         <div className="lg:col-span-5">
           <Reveal>
             <div className="w-12 h-px bg-gold/50 mb-8" />
           </Reveal>
           <Reveal delay={0.06}>
             <p className="text-[10px] tracking-widest text-stone-500 mb-4">
-              {label("FIXED SCARCITY", "固定稀缺性")}
+              FIXED SCARCITY
             </p>
           </Reveal>
           <Reveal delay={0.12}>
             <h2 className="text-3xl md:text-4xl font-light tracking-wider text-cream mb-6">
-              {label("GENESIS NFT", "创世 NFT")}
+              GENESIS NFT
             </h2>
           </Reveal>
           <Reveal delay={0.18}>
@@ -37,7 +36,6 @@ export default function Nft() {
               )}
             </p>
           </Reveal>
-
           <Reveal delay={0.24}>
             <div className="p-8 bg-charcoal/30 border-l border-ember/40">
               <p className="text-xs text-stone-400 leading-relaxed">
@@ -50,17 +48,14 @@ export default function Nft() {
           </Reveal>
         </div>
 
-        {/* Right: Table */}
         <div className="lg:col-span-7">
           <Reveal>
             <div className="border border-white/10 overflow-hidden">
-              {/* Header */}
               <div className="grid grid-cols-3 bg-gold/10 p-6">
-                <span className="text-[10px] tracking-widest text-gold">{label("TIER", "等级")}</span>
-                <span className="text-[10px] tracking-widest text-gold">{label("QUANTITY", "数量")}</span>
-                <span className="text-[10px] tracking-widest text-gold text-right">{label("WEIGHT", "权重")}</span>
+                <span className="text-[10px] tracking-widest text-gold">TIER</span>
+                <span className="text-[10px] tracking-widest text-gold">QUANTITY</span>
+                <span className="text-[10px] tracking-widest text-gold text-right">WEIGHT</span>
               </div>
-              {/* Rows */}
               {TIERS.map((t) => (
                 <div key={t.tier} className="grid grid-cols-3 p-6 border-t border-white/5 bg-void hover:bg-charcoal/40 transition-colors duration-300">
                   <span className="text-sm text-cream font-light">{label(t.tier, t.tierZh)}</span>
@@ -68,11 +63,10 @@ export default function Nft() {
                   <span className="text-sm text-stone-400 font-mono text-right">{t.weight}</span>
                 </div>
               ))}
-              {/* Footer */}
               <div className="grid grid-cols-3 p-6 border-t border-white/5 bg-charcoal/20">
-                <span className="text-[10px] tracking-widest text-stone-500">{label("TOTAL", "总计")}</span>
+                <span className="text-[10px] tracking-widest text-stone-500">TOTAL</span>
                 <span className="text-[10px] tracking-widest text-stone-500 font-mono">300</span>
-                <span className="text-[10px] tracking-widest text-stone-500 text-right">{label("NEVER INCREASED", "永不增发")}</span>
+                <span className="text-[10px] tracking-widest text-stone-500 text-right">NEVER INCREASED</span>
               </div>
             </div>
           </Reveal>

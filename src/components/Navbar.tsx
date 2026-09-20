@@ -50,7 +50,7 @@ export default function Navbar() {
           rel="noreferrer"
           className="hidden md:inline-block text-[10px] tracking-widest text-gold/80 border border-gold/30 px-5 py-2 hover:bg-gold/5 transition-all duration-300"
         >
-          JOIN_OPS
+          JOIN
         </a>
       </div>
     </header>
